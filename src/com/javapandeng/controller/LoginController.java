@@ -2,13 +2,11 @@ package com.javapandeng.controller;
 
 
 import com.javapandeng.base.BaseController;
-import com.javapandeng.po.CategoryDto;
-import com.javapandeng.po.Item;
-import com.javapandeng.po.ItemCategory;
-import com.javapandeng.po.Manage;
+import com.javapandeng.po.*;
 import com.javapandeng.service.ItemCategoryService;
 import com.javapandeng.service.ItemService;
 import com.javapandeng.service.ManageService;
+import com.javapandeng.service.UserService;
 import com.javapandeng.utils.Consts;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -18,6 +16,8 @@ import org.springframework.util.CollectionUtils;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+import javax.xml.ws.http.HTTPBinding;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
@@ -34,6 +34,10 @@ public class LoginController extends BaseController {
 
     @Autowired
     private ItemService itemService;
+
+    @Autowired
+    private UserService userService;
+
 
     /**
      * 管理员登录前
@@ -103,9 +107,41 @@ public class LoginController extends BaseController {
     //注册功能 普通用户
     @RequestMapping("/res")
     public String res(){
-
-
         return "login/res";
     }
 
+    //执行注册功能 普通用户
+    @RequestMapping("/toRes")
+    public String toRes(User u){
+        userService.insert(u);
+        return "login/uLogin";
+    }
+
+    //普通用户登录
+    @RequestMapping("/uLogin")
+    public String uLogin(){
+        return "login/uLogin";
+    }
+
+    //执行登录功能 普通用户
+    @RequestMapping("/utoLogin")
+    public String utoLogin(User u,HttpServletRequest request){
+        User byEntity = userService.getByEntity(u);
+        if (byEntity==null){
+            return "redirect:/login/res.action";
+        }else {
+            request.getSession().setAttribute("role",2);
+            request.getSession().setAttribute("username",byEntity.getUserName());
+            request.getSession().setAttribute("userId",byEntity.getId());
+            return "redirect:/login/uIndex.action";
+        }
+    }
+
+    //前端用户 退出
+    @RequestMapping("/uTui")
+    public String uTui(HttpServletRequest request){
+        HttpSession session=request.getSession();
+        session.invalidate();
+        return "redirect:/login/uIndex.action";
+    }
 }

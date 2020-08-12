@@ -7,7 +7,7 @@
         <font class="left_yh">欢迎来到我的商城作品!</font>
         <div class="right_yh" id="fast_jump">
             <c:if test="${userId!=null}">
-                <a href="#">欢迎您：${username}</a>
+                <a href="#">欢迎您：用户名为<strong>${username}</strong>的用户</a>
                 <b></b>
                 <a href="${ctx}/login/uTui">退出</a>
                 <b></b>
