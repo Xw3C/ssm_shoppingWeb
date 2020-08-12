@@ -6,3 +6,5 @@ SSM电商项目
 ## 环境:
 
 jdk1.8、tomcat8、MySql数据库、IDEA
+
+由于github限制大文件上传，resource文件过于庞大就没有上传
