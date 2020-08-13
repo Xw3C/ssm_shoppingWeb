@@ -1,6 +1,6 @@
 package com.javapandeng.controller;
 
-
+import com.github.pagehelper.Page;
 import com.javapandeng.base.BaseController;
 import com.javapandeng.po.Item;
 import com.javapandeng.po.ItemCategory;
@@ -9,8 +9,6 @@ import com.javapandeng.service.ItemService;
 import com.javapandeng.utils.Pager;
 import com.javapandeng.utils.SystemContext;
 import com.javapandeng.utils.UUIDUtils;
-import com.sun.org.apache.xpath.internal.operations.Mod;
-import org.omg.CosNaming.NamingContextExtPackage.StringNameHelper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -128,6 +126,33 @@ public class ItemController extends BaseController {
         obj.setIsDelete(1);
         itemService.updateById(obj);
         return "redirect:/item/findBySql.action";
+    }
+
+    //按关键字或则二级分类查询
+    @RequestMapping("/shoplist")
+    public String shoplist(Item item,String condition,Model model){
+        String sql = "select * from item where isDelete=0";
+        if(!isEmpty(item.getCategoryIdTwo())){
+            sql +=" and category_id_two = " +item.getCategoryIdTwo();
+        }
+        if(!isEmpty(condition)){
+            sql += " and name like '%" + condition +"%' ";
+            model.addAttribute("condition",condition);
+        }
+        if (!isEmpty(item.getPrice())){
+            sql +=" order by (price+0) desc";
+        }
+        if (!isEmpty(item.getGmNum())){
+            sql +=" order by GmNum desc";
+        }
+        if (isEmpty(item.getPrice())&&isEmpty(item.getGmNum())){
+            sql +=" order by id desc";
+        }
+
+        Pager<Item> pagers = itemService.findBySqlRerturnEntity(sql);
+        model.addAttribute("pagers",pagers);
+        model.addAttribute("obj",item);
+        return "item/shoplist";
     }
 }
 

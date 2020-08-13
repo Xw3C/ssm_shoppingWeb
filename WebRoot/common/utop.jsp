@@ -30,7 +30,7 @@
             <img src="${ctx}/resource/images/logo.png" alt="" style="height: 70px">
         </a>
         <div class="right_yh" style="height:28px;width:316px;border:2px solid #dd4545;margin-top:-40px;">
-            <form action="${ctx}/item/shopList" method="post">
+            <form action="${ctx}/item/shoplist" method="post">
                 <input type="text" placeholder="关键词查询" class="search" name="condition" value="${condition}">
                 <input type="submit" class="btnSearh" value="搜索">
             </form>

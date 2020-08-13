@@ -50,7 +50,6 @@
                 <a class="button border-main" href="${ctx}/item/update?id=${data.id}"><span class="icon-edit">修改</span> </a>
                 <a class="button border-red" href="${ctx}/item/delete?id=${data.id}"><span class="icon-trash-o">下架</span> </a>
             </td>
-
         </tr>
     </c:forEach>
         <tr>

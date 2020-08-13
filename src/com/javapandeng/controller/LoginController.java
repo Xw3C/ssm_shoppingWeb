@@ -43,7 +43,7 @@ public class LoginController extends BaseController {
      * 管理员登录前
      * @return
      */
-    @RequestMapping("login")
+    @RequestMapping("/login")
     public String login(){
         return "/login/mLogin";
     }
@@ -54,7 +54,7 @@ public class LoginController extends BaseController {
      * 登录验证
      * @return
      */
-    @RequestMapping("toLogin")
+    @RequestMapping("/toLogin")
     public String toLogin(Manage manage, HttpServletRequest request){
         Manage byEntity = manageService.getByEntity(manage);
         if (byEntity==null){
@@ -67,7 +67,7 @@ public class LoginController extends BaseController {
     /**
      *管理员退出
      */
-    @RequestMapping("mtuichu")
+    @RequestMapping("/mtuichu")
     public String mtuichu(HttpServletRequest request){
         request.getSession().setAttribute(Consts.MANAGE,null);
 
