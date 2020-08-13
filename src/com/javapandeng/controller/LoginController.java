@@ -131,8 +131,8 @@ public class LoginController extends BaseController {
             return "redirect:/login/res.action";
         }else {
             request.getSession().setAttribute("role",2);
-            request.getSession().setAttribute("username",byEntity.getUserName());
-            request.getSession().setAttribute("userId",byEntity.getId());
+            request.getSession().setAttribute(Consts.USERNAME,byEntity.getUserName());
+            request.getSession().setAttribute(Consts.USERID,byEntity.getId());
             return "redirect:/login/uIndex.action";
         }
     }

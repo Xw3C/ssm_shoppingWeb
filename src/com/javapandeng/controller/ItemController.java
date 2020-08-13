@@ -154,5 +154,12 @@ public class ItemController extends BaseController {
         model.addAttribute("obj",item);
         return "item/shoplist";
     }
+
+    @RequestMapping("/view")
+    public String view(Integer id,Model model){
+        Item obj =itemService.load(id);
+        model.addAttribute("obj",obj);
+        return "item/view";
+    }
 }
 

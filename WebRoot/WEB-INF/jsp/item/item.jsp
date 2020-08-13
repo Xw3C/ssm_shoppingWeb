@@ -96,9 +96,6 @@
         </tr>
     </table>
 </div>
-
-</body>
-
 <script>
     function changeSearch() {
         $("#listform").submit();
