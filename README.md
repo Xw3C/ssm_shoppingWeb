@@ -2,6 +2,7 @@
 SSM电商项目
 
 # 学习一个SSM电子商城项目
+![image](https://github.com/Xw3C/ssm_shoppingWeb/blob/master/1.PNG)
 
 ## 环境:
 
