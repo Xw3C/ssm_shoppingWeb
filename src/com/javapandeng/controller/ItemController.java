@@ -4,8 +4,10 @@ import com.github.pagehelper.Page;
 import com.javapandeng.base.BaseController;
 import com.javapandeng.po.Item;
 import com.javapandeng.po.ItemCategory;
+import com.javapandeng.po.OrderDetail;
 import com.javapandeng.service.ItemCategoryService;
 import com.javapandeng.service.ItemService;
+import com.javapandeng.utils.Consts;
 import com.javapandeng.utils.Pager;
 import com.javapandeng.utils.SystemContext;
 import com.javapandeng.utils.UUIDUtils;
@@ -161,5 +163,6 @@ public class ItemController extends BaseController {
         model.addAttribute("obj",obj);
         return "item/view";
     }
+
 }
 

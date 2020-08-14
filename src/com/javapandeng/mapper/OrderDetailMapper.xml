@@ -179,11 +179,16 @@
 
     <!--通过对象查询分页-->
     <select id="findByEntity" resultMap="ResultMapOrderDetail" parameterType="com.javapandeng.po.OrderDetail">
-        select<include refid="OrderDetail_field"/>
+        select <include refid="OrderDetail_field"/>
         from order_detail where 1=1
         <include refid="OrderDetail_where"/>
     </select>
 
+
+    <select id="listByOrderId" resultMap="ResultMapOrderDetailDto">
+        select <include refid="OrderDetail_field"/>
+        from order_detail where order_id = #{id}
+    </select>
 
     <!--批量新增-->
     <select id="insertBatch" parameterType="java.util.List">
@@ -195,6 +200,7 @@
             (#{item.item_id},#{item.order_id},#{item.stutas},#{item.num},#{item.total})
         </foreach>
     </select>
+
 
     <!--批量修改-->
     <update id="updateBatch" parameterType="java.util.List">

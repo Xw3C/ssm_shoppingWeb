@@ -5,12 +5,16 @@ import com.javapandeng.po.Item;
 import com.javapandeng.po.ItemCategory;
 import com.javapandeng.po.User;
 import com.javapandeng.service.UserService;
+import com.javapandeng.utils.Consts;
 import com.javapandeng.utils.Pager;
+import com.sun.org.apache.xpath.internal.operations.Mod;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.HttpRequestHandler;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 
 
@@ -54,6 +58,29 @@ public class UserController extends BaseController {
     public String exUpdate(User user){
         userService.updateById(user);
         return "redirect:/user/findBySql.action";
+    }
+    
+    @RequestMapping("/view")
+    public String view(Model model, HttpServletRequest request){
+        Object attribute=request.getSession().getAttribute(Consts.USERID);
+        if(attribute==null){
+            return "redirect:/login/uLogin";
+        }
+        Integer userId = Integer.valueOf(attribute.toString());
+        User obj = userService.load(userId);
+        model.addAttribute("obj",obj);
+        return "user/view";
+    }
+
+    @RequestMapping("/exUpdate1")
+    public String exUpdate1(User user,HttpServletRequest request) {
+        Object attribute = request.getSession().getAttribute(Consts.USERID);
+        if (attribute == null) {
+            return "redirect:/login/uLogin";
+        }
+        user.setId(Integer.valueOf(attribute.toString()));
+        userService.updateById(user);
+        return "redirect:/user/view.action";
     }
 
 

@@ -1,5 +1,4 @@
-<%@ taglib prefix="C" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@page language="java" contentType="text/html; character=UTF-8" pageEncoding="UTF-8"%>
+<%@page language="java" contentType="text/html; character=UTF-8" pageEncoding="UTF-8" %>
 <%@include file="/common/taglibs.jsp"%>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
         "http://www.w3.org/TR/html4/loose.dtd">
@@ -25,7 +24,7 @@
             <span class="block_yh left_yh fff" style="height: 45px;line-height: 44px;margin-left: 10px;">分类</span>
             <!--导航展开部分-->
             <div class="downSlide">
-                <c:forEach items="${lbs}" var="data" varStatus="1">
+                <c:forEach items="${lbs}" var="data" varStatus="l">
                     <div class="n1Nav">
                         <font>${data.father.name}</font>
                         <img src="${ctx}/resource/user/images/jt.png" alt="">
@@ -53,8 +52,8 @@
 
 
 <!--轮动广告-->
-<div class="width1200 center_yh hidden_yh" style="position: relative;z-index: 80;">
-    <div class="example2" style="width: 1200px;height: 490px;overflow: hidden;margin-left: 230px">
+<div class="width1200 center_yh hidden_yh" style="position: relative;z-index:80;">
+    <div class="example2" style="width: 1200px;height: 490px;overflow: hidden;margin-left: 230px;">
         <ul>
             <li><img src="${ctx}/resource/images/a.webp" alt=""></li>
             <li><img src="${ctx}/resource/images/b.webp" alt=""></li>
@@ -64,48 +63,45 @@
     </div>
     <script>
         $(function () {
-            $(".example2").luara({with:"966",height:"490",interval:3500,select:"selected",deriction:"left"});
+            $(".example2").luara({width:"966",height:"490",interval:4500,selected:"seleted",deriction:"left"});
         });
     </script>
 </div>
-    <!--折扣商品-->
+<!--折扣商品-->
 <div class="width1200 center_yh hidden_yh">
-    <div class="width100" style="height: 45px;line-height: 45px;border-bottom: 2px solid #dd4545;margin-top: 20px">
+    <div class="width100" style="height: 45px;line-height: 45px;border-bottom: 2px solid #dd4545; margin-top: 20px;">
         <font class="left_yh font20">折扣大促销</font>
     </div>
     <div class="width100 hidden_yh" style="height: 480px;">
         <div class="normalPic">
-            <c:forEach items="${zks}" var="data" varStatus="1">
+            <c:forEach items="${zks}" var="data" varStatus="l">
                 <a href="${ctx}/item/view?id=${data.id}">
-                    <h3 class="yihang c_33 font14 font100" style="padding-left: 10px;padding-right: 10px" >${data.name}</h3>
-                    <p class="red font14" style="padding-left: 10px">${data.price}</p>
-                    <img src="${data.url1}" width="105" height="118" alt="" style="margin: 0 auto" >
+                    <h3 class="yihang c_33 font14 font100" style="padding-left: 10px;padding-right: 10px;">${data.name}</h3>
+                    <p class="red font14" style="padding-left: 10px;">${data.price}</p>
+                    <img src="${data.url1}" width="105" height="118" alt="" style="margin:0 auto">
                 </a>
             </c:forEach>
         </div>
-
     </div>
-
 </div>
 
-
-    <!-热门商品-->
-    <div class="width1200 center_yh hidden_yh">
-        <div class="width100" style="height: 45px;line-height: 45px;border-bottom: 2px solid #dd4545;margin-top: 20px">
-            <font class="left_yh font20">热门商品</font>
-        </div>
-        <div class="width100 hidden_yh" style="height: 480px;">
-            <div class="normalPic">
-                <c:forEach items="${rsx}" var="data" varStatus="1">
-                    <a href="${ctx}/item/view?id=${data.id}">
-                        <h3 class="yihang c_33 font14 font100" style="padding-left: 10px;padding-right: 10px" >${data.name}</h3>
-                        <p class="red font14" style="padding-left: 10px">${data.price}</p>
-                        <img src="${data.url1}" width="105" height="118" alt="" style="margin: 0 auto" >
-                    </a>
-                </c:forEach>
-            </div>
+<!--热门商品-->
+<div class="width1200 center_yh hidden_yh">
+    <div class="width100" style="height: 45px;line-height: 45px;border-bottom: 2px solid #dd4545; margin-top: 20px;">
+        <font class="left_yh font20">热门商品</font>
+    </div>
+    <div class="width100 hidden_yh" style="height: 480px;">
+        <div class="normalPic">
+            <c:forEach items="${rxs}" var="data" varStatus="l">
+                <a href="${ctx}/item/view?id=${data.id}">
+                    <h3 class="yihang c_33 font14 font100" style="padding-left: 10px;padding-right: 10px;">${data.name}</h3>
+                    <p class="red font14" style="padding-left: 10px;">${data.price}</p>
+                    <img src="${data.url1}" width="105" height="118" alt="" style="margin:0 auto">
+                </a>
+            </c:forEach>
         </div>
     </div>
+</div>
     <%@include file="/common/ufooter.jsp"%>
 </body>
 </html>
