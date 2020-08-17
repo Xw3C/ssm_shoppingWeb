@@ -1,5 +1,4 @@
-<%@ taglib prefix="C" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@page language="java" contentType="text/html; character=UTF-8" pageEncoding="UTF-8"%>
+<%@page language="java" contentType="text/html; character=UTF-8" pageEncoding="UTF-8" %>
 <%@include file="/common/taglibs.jsp"%>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
         "http://www.w3.org/TR/html4/loose.dtd">
@@ -29,7 +28,7 @@
 
     <!--折扣商品-->
 <div class="width1200 center_yh hidden_yh font14" style="height: 40px;line-height: 40px;">
-    <span>当前位置:</span><a href="${ctx}/login/uIndex" class="c_66">首页</a>><a href="#" class="c_66">商品列表</a>
+    <span>当前位置：</span><a href="${ctx}/login/uIndex" class="c_66">首页</a>><a href="#" class="c_66">商品列表</a>
 </div>
 <div class="width1198 center_yh" style="height: 35px; background: #f0f0f0; border: 1px solid #ddd;margin-top: 25px;">
     <a href="${ctx}/item/shoplist?categoryIdTwo=${obj.categoryIdTwo}" class="mR">默认</a>
@@ -131,12 +130,12 @@
                 var re=result;
                 if(re.res==0){
                     alert("请登录");
-                    window.location.href="${ctx}/login/uLogin"
+                    window.location.href="${ctx}/login/uLogin";
                 }else {
-                    window.location.href="${ctx}/car/findBySql"
+                    window.location.href="${ctx}/car/findBySql";
                 }
             }
-        })
+        });
     }
 </script>
 <%@include file="/common/ufooter.jsp"%>

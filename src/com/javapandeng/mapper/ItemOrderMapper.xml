@@ -34,7 +34,7 @@
 
     <!--实体类的属性-->
     <sql id="ItemOrder_insert">
-        #{id},#{item_id},#{user_id},#{code},#{addTime},#{total},#{isDelete},#{status}
+        #{id},#{itemId},#{userId},#{code},#{addTime},#{total},#{isDelete},#{status}
     </sql>
 
     <!--更新结果 -->

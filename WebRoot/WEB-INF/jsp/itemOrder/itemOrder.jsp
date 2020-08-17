@@ -49,7 +49,7 @@
             <td>
                 <a class="button border-main" href="${ctx}/orderDetail/ulist?orderId=${data.id}"><span class="icon-edit">查看购买商品</span> </a>
                 <c:if test="${data.status == 0}">
-                    <a class="button border-red" href="#"><span class="icon-trash-o">去发货</span> </a>
+                    <a class="button border-red" href="${ctx}/itemOrder/fh?id=${data.id}"><span class="icon-trash-o">去发货</span> </a>
                 </c:if>
             </td>
 

@@ -1,6 +1,7 @@
 package com.javapandeng.po;
 
 import java.io.Serializable;
+import java.util.List;
 
 /**
  *
@@ -51,6 +52,9 @@ public class Item implements Serializable {
 
     //0有效 1删除
     private Integer isDelete;
+
+    //评论列表
+    private List<Comment> pls;
 
 
     public Integer getId() {
@@ -246,6 +250,13 @@ public class Item implements Serializable {
         this.isDelete = isDelete;
     }
 
+    public List<Comment> getPls() {
+        return pls;
+    }
+
+    public void setPls(List<Comment> pls) {
+        this.pls = pls;
+    }
 
     @Override
     public String toString() {

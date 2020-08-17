@@ -10,6 +10,7 @@ import com.javapandeng.utils.Consts;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
@@ -71,5 +72,13 @@ public class CarController {
         List<Car> list = carService.listBySqlReturnEntity(sql);
         model.addAttribute("list",list);
         return "car/car";
+    }
+
+    //删除购物车
+    @RequestMapping("/delete")
+    @ResponseBody
+    public String delete(Integer id){
+        carService.deleteById(id);
+        return "success";
     }
 }
