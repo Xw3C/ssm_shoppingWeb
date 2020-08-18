@@ -60,13 +60,13 @@
                 <div class="pagelist">
                     <%--分页开始--%>
                     <pg:pager url="${ctx}/user/findBySql" maxIndexPages="5" items="${pagers.total}" maxPageItems="15" export="curPage=pageNumber">
-                        <pa:last>
+                        <pg:last>
                             共${pagers.total}记录，共${pageNumber}页
-                        </pa:last>
+                        </pg:last>
                         当前第${curPage}页
-                        <pa:first>
+                        <pg:first>
                             <a href="${pageUrl}">首页</a>
-                        </pa:first>
+                        </pg:first>
                         <pg:prev>
                             <a href="${pageUrl}上一页"
                         </pg:prev>
@@ -80,10 +80,10 @@
                                 </c:otherwise>
                             </c:choose>
                         </pg:pages>
-                        <pa:next>
+                        <pg:next>
                             <a href="${pageUrl}">下一页</a>
-                        </pa:next>
-                        <pa:last>
+                        </pg:next>
+                        <pg:last>
                             <c:choose>
                                 <c:when test="${curPage eq pageNumber}">
                                     <font color="red">尾页</font>
@@ -92,7 +92,7 @@
                                     <a href="${pageUrl}">尾页</a>
                                 </c:otherwise>
                             </c:choose>
-                        </pa:last>
+                        </pg:last>
                     </pg:pager>
                 </div>
             </td>

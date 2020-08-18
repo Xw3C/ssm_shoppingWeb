@@ -6,11 +6,14 @@ import com.javapandeng.base.BaseController;
 import com.javapandeng.po.News;
 import com.javapandeng.service.NewsService;
 import com.javapandeng.utils.Pager;
+import com.sun.org.apache.xpath.internal.operations.Mod;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import javax.enterprise.inject.New;
+import javax.persistence.criteria.CriteriaBuilder;
 import java.util.Date;
 
 @Controller
@@ -80,4 +83,20 @@ public class NewsController extends BaseController {
     }
 
 
+
+    //前端公告列表
+    @RequestMapping("/list")
+    public String list(Model model){
+        Pager<News> pagers = newsService.findByEntity(new News());
+        model.addAttribute("pagers",pagers);
+        return "news/list";
+    }
+
+    //公告详情
+    @RequestMapping("/view")
+    public String view(Integer id,Model model){
+        News obj = newsService.load(id);
+        model.addAttribute("obj",obj);
+        return "news/view";
+    }
 }
