@@ -92,7 +92,7 @@
     </div>
     <div class="width100 hidden_yh" style="height: 480px;">
         <div class="normalPic">
-            <c:forEach items="${rxs}" var="data" varStatus="l">
+            <c:forEach items="${rsx}" var="data" varStatus="l">
                 <a href="${ctx}/item/view?id=${data.id}">
                     <h3 class="yihang c_33 font14 font100" style="padding-left: 10px;padding-right: 10px;">${data.name}</h3>
                     <p class="red font14" style="padding-left: 10px;">${data.price}</p>
